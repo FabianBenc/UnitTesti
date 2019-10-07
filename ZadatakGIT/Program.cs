@@ -54,11 +54,21 @@ namespace ZadatakGIT
         }
         public void DLLPrimjer()
         {
-
+          
         }
         public void StackPrimjer()
         {
+            Stack myStack = new Stack();
 
+            Console.WriteLine("======================================");
+            myStack.Push(10);
+            myStack.Push(20);
+            myStack.Push(30);
+            myStack.Push(40);
+            myStack.PrintStack();
+            myStack.Peek();
+            Console.WriteLine("Element poppan iz Stacka: {0}", myStack.Pop());
+            myStack.PrintStack();
         }
         public void QueuePrimjer()
         {
