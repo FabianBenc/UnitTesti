@@ -13,7 +13,7 @@ namespace ZadatakGIT
             Program meni = new Program();
 
             Console.Write("\n GIT implementacija\n");
-            Console.Write("1-Signly linked lista.\n2-Doubly linked lista.\n3-Stack.\n4-Queue.\n5-Hash Table.\n6-Izlaz.\n");
+            Console.Write("1-Singly linked lista.\n2-Doubly linked lista.\n3-Stack.\n4-Queue.\n5-Hash Table.\n6-Binary Tree.\n7-Izlaz.\n");
             Console.Write("Vas izbor: ");
 
             string IzborKorisnika = Console.ReadLine();
@@ -41,6 +41,9 @@ namespace ZadatakGIT
                     meni.HashTablePrimjer();
                     break;
                 case "6":
+                    meni.BinaryTreePrimjer();
+                    break;
+                case "7":
                     break;
 
                 default:
@@ -65,6 +68,10 @@ namespace ZadatakGIT
 
         }
         public void HashTablePrimjer()
+        {
+
+        }
+        public void BinaryTreePrimjer()
         {
 
         }
