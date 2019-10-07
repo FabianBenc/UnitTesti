@@ -58,10 +58,37 @@ namespace ZadatakGIT
         }
         public void StackPrimjer()
         {
-
+            
         }
         public void QueuePrimjer()
         {
+            Queue<int> queue = new Queue<int>();
+
+            Console.WriteLine("===================================");
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Enqueue(5);
+            Console.WriteLine("Queue elementi:");
+
+            foreach (Object obj in queue)
+            {
+                Console.WriteLine(obj);
+            }
+            Console.WriteLine("Najvisi element u queue je {0}\n", queue.Peek());
+
+            queue.Dequeue();
+            queue.Dequeue();
+            queue.Dequeue();
+            Console.WriteLine("Queue elementi poslije 3 Dequeue-a:");
+
+            foreach (Object obj in queue)
+            {
+                Console.WriteLine(obj);
+            }
+
+            Console.WriteLine("Najvisi element u queue nakon dequeue-a je {0}\n", queue.Peek());
 
         }
         public void HashTablePrimjer()
