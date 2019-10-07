@@ -54,6 +54,34 @@ namespace ZadatakGIT
         }
         public void DLLPrimjer()
         {
+            LinkedList<int> DLL = new LinkedList<int>();
+
+            Console.WriteLine("=======================================");
+            DLL.AddFirst(4);
+            DLL.AddFirst(6);
+            DLL.AddFirst(2);
+            DLL.AddLast(17);
+            DLL.AddLast(5);
+            Console.WriteLine("Elementi Doubly Linked Liste: ");
+            foreach (Object obj in DLL)
+            {
+                Console.WriteLine(obj);
+            }
+            DLL.RemoveLast();
+            DLL.RemoveFirst();
+            Console.WriteLine("Elementi Doubly Linked Liste nakon brisanja prvog i zadnjeg: ");
+            foreach (Object obj in DLL)
+            {
+                Console.WriteLine(obj);
+            }
+            DLL.Remove(17);
+            Console.WriteLine("Brisanje elementa 17 sa liste: ");
+            foreach (Object obj in DLL)
+            {
+                Console.WriteLine(obj);
+            }
+            Console.WriteLine("Sadrzi li dvostruka lista 4?" + DLL.Contains(4));
+            DLL.Clear();
 
         }
         public void StackPrimjer()
