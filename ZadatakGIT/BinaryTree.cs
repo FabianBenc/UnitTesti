@@ -68,15 +68,15 @@ namespace ZadatakGIT
             {
                 int result = current.CompareTo(value);
 
-                if (result > 0)
-                {
-                    parent = current;
-                    current = current.Right;
-                }
-                else if (result < 0)
+                if (result < 0)
                 {
                     parent = current;
                     current = current.Left;
+                }
+                else if (result > 0)
+                {
+                    parent = current;
+                    current = current.Right;
                 }
                 else
                 {
