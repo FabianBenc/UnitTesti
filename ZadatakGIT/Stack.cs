@@ -4,77 +4,68 @@ using System.Text;
 
 namespace ZadatakGIT
 {
-    class Stack
+    public class Stack<T>:System.Collections.Generic.IEnumerable<T>
     {
-        static readonly int MAX = 1000;
-        int top;
-        int[] stack = new int[MAX];
+        T[] _items = new T[0];
+        int _size;
 
-        bool IsEmpty()
+        public void Push(T item)
         {
-            return (top < 0);
+            if (_size == _items.Length)
+            {
+                int newLength = _size == 0 ? 4 : _size * 2;
+                T[] newArray = new T[newLength];
+                _items.CopyTo(newArray, 0);
+                _items = newArray;
+            }
+            _items[_size] = item;
+            _size++;
         }
 
-        public Stack()
+        public T Pop()
         {
-            top = -1;
+            if (_size == 0)
+            {
+                throw new InvalidOperationException("Stack je prazan");
+            }
+
+            _size--;
+            return _items[_size];
         }
 
-        public bool Push(int data)
+        public T Peek()
         {
-            if (top >= MAX)
+            if (_size == 0)
             {
-                Console.WriteLine("Stack Overflow");
-                return false;
+                throw new InvalidOperationException("Stack je prazan");
             }
-            else 
-            {
-                stack[++top] = data;
-                return true;
-            }
+            return _items[_size - 1];
         }
 
-        public int Pop()
+        public int Count
         {
-            if (top < 0)
+            get 
             {
-                Console.WriteLine("Stack underflow");
-                return 0;
-
-            }
-            else 
-            {
-                int value = stack[top--];
-                return value;
+                return _size;
             }
         }
 
-        public void Peek()
+        public void Clear()
         {
-            if (top < 0)
-            {
-                Console.WriteLine("Stack Underflow");
-                return;
-            }
-            else
-                Console.WriteLine("Element na vrhu stacka je  : {0}", stack[top]);
+            _size = 0;
         }
 
-        public void PrintStack()
+        public System.Collections.Generic.IEnumerator<T> GetEnumerator()
         {
-            if (top < 0)
+            for (int i = _size - 1; i >= 0; i--)
             {
-                Console.WriteLine("Stack underflow");
-                return;
+                yield return _items[i];
             }
-            else 
-            {
-                Console.WriteLine("Elementi u stacku su: ");
-                for (int i = top; i >= 0; i--)
-                {
-                    Console.WriteLine(stack[i]);
-                }
-            }
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
