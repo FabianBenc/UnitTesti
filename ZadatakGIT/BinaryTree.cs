@@ -58,6 +58,7 @@ namespace ZadatakGIT
             BinaryTreeNode<T> parent;
             return FindWithParent(value, out parent) != null;
         }
+
         private BinaryTreeNode<T> FindWithParent(T value, out BinaryTreeNode<T> parent)
         {
             BinaryTreeNode<T> current = _head;
@@ -72,7 +73,12 @@ namespace ZadatakGIT
                     parent = current;
                     current = current.Right;
                 }
-                else 
+                else if (result < 0)
+                {
+                    parent = current;
+                    current = current.Left;
+                }
+                else
                 {
                     break;
                 }
@@ -168,6 +174,7 @@ namespace ZadatakGIT
         #endregion
 
         #region Pre-Order Traversal
+
         public void PreOrderTraversal(Action<T> action)
         {
             PreOrderTraversal(action, _head);
@@ -185,10 +192,12 @@ namespace ZadatakGIT
         #endregion
 
         #region Post-Order Traversal
+
         public void PostOrderTraversal(Action<T> action)
         {
             PostOrderTraversal(action, _head);
         }
+
         private void PostOrderTraversal(Action<T> action, BinaryTreeNode<T> node)
         {
             if (node != null)
@@ -201,10 +210,12 @@ namespace ZadatakGIT
         #endregion
 
         #region In-Order Enumeration
+
         public void InOrderTraversal(Action<T> action)
         {
             InOrderTraversal(action, _head);
         }
+
         private void InOrderTraversal(Action<T> action, BinaryTreeNode<T> node)
         {
             if (node != null)
@@ -214,6 +225,7 @@ namespace ZadatakGIT
                 InOrderTraversal(action, node.Right);
             }
         }
+
         public IEnumerator<T> InOrderTraversal()
         {
             if (_head != null)
