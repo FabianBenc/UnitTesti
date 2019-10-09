@@ -12,6 +12,7 @@ namespace ZadatakGIT
             get;
             private set;
         }
+
         public LinkedListNode<T> Tail
         {
             get;
@@ -19,10 +20,12 @@ namespace ZadatakGIT
         }
 
         #region Add
+
         public void AddFirst(T value)
         {
             AddFirst(new LinkedListNode<T>(value));
         }
+
         public void AddFirst(LinkedListNode<T> node)
         {
             LinkedListNode<T> temp = Head;
@@ -39,10 +42,12 @@ namespace ZadatakGIT
                 temp.Previous = Head;
             }
         }
+
         public void AddLast(T value)
         {
             AddLast(new LinkedListNode<T>(value));
         }
+
         public void AddLast(LinkedListNode<T> node)
         {
             if (Count == 0)
@@ -60,6 +65,7 @@ namespace ZadatakGIT
         #endregion
 
         #region Remove
+
         public void RemoveFirst()
         {
             if (Count != 0)
@@ -77,6 +83,7 @@ namespace ZadatakGIT
                 }
             }
         }
+
         public void RemoveLast()
         {
             if (Count != 0)
@@ -103,10 +110,12 @@ namespace ZadatakGIT
             get;
             private set;
         }
+
         public void Add(T item)
         {
             AddFirst(item);
         }
+
         public bool Contains(T item)
         {
             LinkedListNode<T> current = Head;
@@ -120,6 +129,7 @@ namespace ZadatakGIT
             }
             return false;
         }
+
         public void CopyTo(T[] array, int arrayIndex)
         {
             LinkedListNode<T> current = Head;
@@ -129,6 +139,7 @@ namespace ZadatakGIT
                 current = current.Next;
             }
         }
+
         public bool IsReadOnly
         {
             get
@@ -136,6 +147,7 @@ namespace ZadatakGIT
                 return false;
             }
         }
+
         public bool Remove(T item)
         {
             LinkedListNode<T> previous = null;
@@ -169,6 +181,7 @@ namespace ZadatakGIT
             }
             return false;
         }
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             LinkedListNode<T> current = Head;
@@ -178,10 +191,12 @@ namespace ZadatakGIT
                 current = current.Next;
             }
         }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((System.Collections.Generic.IEnumerable <T>) this).GetEnumerator();
         }
+
         public void Clear()
         {
             Head = null;
