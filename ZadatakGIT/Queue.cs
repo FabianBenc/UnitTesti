@@ -9,7 +9,7 @@ namespace ZadatakGIT
 {
     public class Queue<T> : IEnumerable<T>
     {
-        private LinkedList<T> _items = new LinkedList<T>();
+        private System.Collections.Generic.LinkedList<T> _items = new System.Collections.Generic.LinkedList<T>();
 
         public void Enqueue(T item)
         {
