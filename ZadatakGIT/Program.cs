@@ -166,7 +166,32 @@ namespace ZadatakGIT
         }
         public void BinaryTreePrimjer()
         {
+            BinaryTree<int> BTree = new BinaryTree<int>();
 
+            Console.WriteLine("========================================");
+            BTree.Add(4);
+            BTree.Add(2);
+            BTree.Add(1);
+            BTree.Add(3);
+            BTree.Add(6);
+            BTree.Add(5);
+            BTree.Add(7);
+
+            Console.WriteLine();
+            Console.WriteLine("Dodani Elementi stabla: ");
+            foreach (Object obj in BTree)
+            {
+                Console.WriteLine(obj);
+            }
+            
+            BTree.Remove(4);
+            BTree.Remove(7);
+            Console.WriteLine("Stablo nakon brisanja elemenata: ");
+            foreach (Object obj in BTree)
+            {
+                Console.WriteLine(obj);
+            }
+            Console.WriteLine("Sadrzi li stablo element 6?: " + BTree.Contains(6));
         }
     }
 }
