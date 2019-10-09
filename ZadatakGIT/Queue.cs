@@ -9,10 +9,12 @@ namespace ZadatakGIT
     public class Queue<T> : IEnumerable<T>
     {
         private LinkedList<T> _items = new LinkedList<T>();
+
         public void Enqueue(T item)
         {
             _items.AddLast(item);
         }
+
         public T Dequeue()
         {
             if (_items.Count == 0)
@@ -24,6 +26,7 @@ namespace ZadatakGIT
             _items.RemoveFirst();
             return value;
         }
+
         public T Peek()
         {
             if (_items.Count == 0)
@@ -32,6 +35,7 @@ namespace ZadatakGIT
             }
             return _items.First.Value;
         }
+
         public int Count
         {
             get 
