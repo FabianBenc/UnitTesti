@@ -45,6 +45,7 @@ namespace ZadatakGIT
                 Console.WriteLine("Nema elemenata u ovoj linked listi.");
             }
         }
+
         public void PrintAllNodes()
         {
             Console.Write("Head->");
@@ -58,6 +59,4 @@ namespace ZadatakGIT
             Console.Write("NULL");
         }
     }
-
-    
 }
