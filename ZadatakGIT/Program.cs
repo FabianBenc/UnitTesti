@@ -54,7 +54,27 @@ namespace ZadatakGIT
         }
         public void SLLPrimjer()
         {
+            SinglyLinkedList SLL = new SinglyLinkedList();
+            Console.WriteLine("====================================");
+            SLL.PrintAllNodes();
+            Console.WriteLine();
+            Console.WriteLine("Dodavanje elemenata u listu (Add at last)");
+            SLL.AddAtLast(12);
+            SLL.AddAtLast(13);
+            SLL.AddAtLast(14);
+            SLL.AddAtLast(15);
+            SLL.PrintAllNodes();
+            Console.WriteLine();
 
+            Console.WriteLine("Dodavanje elemenata u listu na pocetak (Add at start)");
+            SLL.AddAtStart(11);
+            SLL.PrintAllNodes();
+            Console.WriteLine();
+            Console.WriteLine("Brisanje elementa u listi sa pocetka");
+            SLL.RemoveFromStart();
+            SLL.PrintAllNodes();
+
+            Console.ReadKey();
         }
         public void DLLPrimjer()
         {
@@ -66,7 +86,7 @@ namespace ZadatakGIT
         }
         public void QueuePrimjer()
         {
-
+            
         }
         public void HashTablePrimjer()
         {
