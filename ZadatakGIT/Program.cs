@@ -99,10 +99,6 @@ namespace ZadatakGIT
                 Console.WriteLine(obj);
             }
             Console.WriteLine("Sadrzi li stablo element 6?: " + BTree.Contains(6));
-
-
-
-
         }
     }
 }
