@@ -14,10 +14,12 @@ namespace ZadatakGIT
         {
             return (top < 0);
         }
+
         public Stack()
         {
             top = -1;
         }
+
         public bool Push(int data)
         {
             if (top >= MAX)
@@ -31,6 +33,7 @@ namespace ZadatakGIT
                 return true;
             }
         }
+
         public int Pop()
         {
             if (top < 0)
@@ -45,6 +48,7 @@ namespace ZadatakGIT
                 return value;
             }
         }
+
         public void Peek()
         {
             if (top < 0)
@@ -55,6 +59,7 @@ namespace ZadatakGIT
             else
                 Console.WriteLine("Element na vrhu stacka je  : {0}", stack[top]);
         }
+
         public void PrintStack()
         {
             if (top < 0)
