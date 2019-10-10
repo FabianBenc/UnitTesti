@@ -110,7 +110,24 @@ namespace ZadatakGIT
         }
         public void StackPrimjer()
         {
-            
+            Stack<int> myStack = new Stack<int>();
+
+            Console.WriteLine("======================================");
+            myStack.Push(10);
+            myStack.Push(20);
+            myStack.Push(30);
+            myStack.Push(40);
+            Console.WriteLine("Elementi u stacku: ");
+            foreach (Object obj in myStack)
+            {
+                Console.WriteLine(obj);
+            }
+            myStack.Peek();
+            Console.WriteLine("Element poppan iz Stacka: {0}", myStack.Pop());
+            foreach (Object obj in myStack)
+            {
+                Console.WriteLine(obj);
+            }
         }
         public void QueuePrimjer()
         {
