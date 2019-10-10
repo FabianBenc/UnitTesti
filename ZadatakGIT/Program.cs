@@ -131,7 +131,34 @@ namespace ZadatakGIT
         }
         public void QueuePrimjer()
         {
-            
+            Queue<int> queue = new Queue<int>();
+
+            Console.WriteLine("===================================");
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Enqueue(5);
+            Console.WriteLine("Queue elementi:");
+
+            foreach (Object obj in queue)
+            {
+                Console.WriteLine(obj);
+            }
+            Console.WriteLine("Najvisi element u queue je {0}\n", queue.Peek());
+
+            queue.Dequeue();
+            queue.Dequeue();
+            queue.Dequeue();
+            Console.WriteLine("Queue elementi poslije 3 Dequeue-a:");
+
+            foreach (Object obj in queue)
+            {
+                Console.WriteLine(obj);
+            }
+
+            Console.WriteLine("Najvisi element u queue nakon dequeue-a je {0}\n", queue.Peek());
+
         }
         public void HashTablePrimjer()
         {
@@ -156,7 +183,32 @@ namespace ZadatakGIT
         }
         public void BinaryTreePrimjer()
         {
+            BinaryTree<int> BTree = new BinaryTree<int>();
 
+            Console.WriteLine("========================================");
+            BTree.Add(4);
+            BTree.Add(2);
+            BTree.Add(1);
+            BTree.Add(3);
+            BTree.Add(6);
+            BTree.Add(5);
+            BTree.Add(7);
+
+            Console.WriteLine();
+            Console.WriteLine("Dodani Elementi stabla: ");
+            foreach (Object obj in BTree)
+            {
+                Console.WriteLine(obj);
+            }
+            
+            BTree.Remove(4);
+            BTree.Remove(7);
+            Console.WriteLine("Stablo nakon brisanja elemenata: ");
+            foreach (Object obj in BTree)
+            {
+                Console.WriteLine(obj);
+            }
+            Console.WriteLine("Sadrzi li stablo element 6?: " + BTree.Contains(6));
         }
     }
 }
