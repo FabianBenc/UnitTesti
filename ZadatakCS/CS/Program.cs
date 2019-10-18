@@ -32,9 +32,6 @@ namespace ZadatakCS
             {
                 vozaci[i].DodajVozilo(vozila[i]);
             }
-
-            Program meni = new Program();
-
             Console.Write("\n OOP implementacija\n");
             Console.Write("1-Ispis svih vozaca\n2-Ispis vozaca koji voze terenska vozila\n3-Ispis vozaca koji voze letjelice\n4-Ispis svih vozila\n5-Ispis vozila koja su terenska vozila\n6-Ispis vozila koja su letjelice\n7-Izlaz.\n");
             Console.Write("Vas izbor: ");
@@ -44,48 +41,29 @@ namespace ZadatakCS
             switch (IzborKorisnika)
             {
                 case "1":
-
-                    foreach (Vozac a in vozaci)
-                    {
-                        Console.WriteLine(a);
-                    }
+                    Ispis(vozaci);
                     break;
                 case "2":
-                    var VozaciTerenskihVozila = from vozac in vozaci where vozac.VoziTerenskaVozila() select vozac;
-                    foreach (Vozac b in VozaciTerenskihVozila)
-                    {
-                        Console.WriteLine(b);
-                    }
+                    var vozaciter = vozaci.Where(vozac => (vozac as Vozac).VoziTerenskaVozila());
+                    Ispis(vozaciter);
                     //Ispis vozaca koji voze terenska vozila
                     break;
                 case "3":
-                    var VozaciLetecihVozila = from vozac in vozaci where vozac.VoziLetecaVozila() select vozac;
-                    foreach (Vozac c in VozaciLetecihVozila)
-                    {
-                        Console.WriteLine(c);
-                    }
+                    var vozacilet = vozaci.Where(vozac => (vozac as Vozac).VoziLetecaVozila());
+                    Ispis(vozacilet);
                     //Ispis vozaca koji voze letjelice
                     break;
                 case "4":
-                    foreach (Vozilo b in vozila)
-                    {
-                        Console.WriteLine(b);
-                    }
+                    Ispis(vozila);
                     break;
                 case "5":
-                    var TerenskaVozila = from vozilo in vozila where vozilo is ITerenskaVozila select vozilo;
-                    foreach (Vozilo c in TerenskaVozila)
-                    {
-                        Console.WriteLine(c);
-                    }
+                    var tervozilo = vozila.Where(l => l is ITerenskaVozila);
+                    Ispis(tervozilo);
                     //Ispis vozila koja su terenska vozila
                     break;
                 case "6":
-                    var LetecaVozila = from vozilo in vozila where vozilo is ILetecaVozila select vozilo;
-                    foreach (Vozilo c in LetecaVozila)
-                    {
-                        Console.WriteLine(c);
-                    }
+                    var letvozilo = vozila.Where(l => l is ILetecaVozila);
+                    Ispis(letvozilo);
                     //Ispis vozila koja su letjelice
                     break;
                 case "7":
@@ -95,5 +73,16 @@ namespace ZadatakCS
                     break;
             }
         }
+
+        public static void Ispis<T>(IEnumerable<T> popisvoz)
+        {
+            foreach (var x in popisvoz)
+            {
+                Console.WriteLine(x.ToString());
+            }
+            Console.WriteLine();
+        }
+
+        
     }
 }

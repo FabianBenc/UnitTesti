@@ -9,7 +9,7 @@ namespace ZadatakCS
         public string NazivVozila { get; set; }
         public override string ToString()
         {
-            return $"{nameof(NazivVozila)}:{NazivVozila}";
+            return $"{nameof (NazivVozila)}: {NazivVozila}";
         }
     }
 }
