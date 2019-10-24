@@ -25,7 +25,7 @@ namespace ZadatakCS
                 new Zrakoplov {NazivVozila= "F-16" },
                 new Tenk {NazivVozila = "Abrams" },
                 new Zrakoplov { NazivVozila = "Boeing" },
-
+                
              };
 
             for (int i = 0; i < vozaci.Count; i++)
