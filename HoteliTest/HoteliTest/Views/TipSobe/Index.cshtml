@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HoteliTest.Models.TipSobe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tip Sobe</h2>
+
+<p>
+    @Html.ActionLink("Novi Tip Sobe", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Opis Sobe
+        </th>
+        <th>
+            Cijena po nocenju
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.OpisSobe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CijenaPoNoci)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TipSobeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TipSobeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TipSobeID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<HoteliTest.Models.StavkaRacuna>
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Stavka Racuna</h2>
+<table class="table">
+    <tr>
+        <th>
+            Prezime
+        </th>
+
+        <th>
+            Ime Usluge
+        </th>
+
+        <th>
+            Kolicina
+        </th>
+
+        <th>
+            Cijena Usluge
+        </th>
+
+        <th>
+            ID Usluge
+        </th>
+
+        <th>
+            Racun ID
+        </th>
+
+        <th>
+            Ukupan Iznos
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Racun.Rezervacija.Gost.Prezime)
+            </td>
+        
+            <td>
+                @Html.DisplayFor(modelItem => item.Usluga.ImeUsluge)
+            </td>
+        
+            <td>
+                @Html.DisplayFor(modelItem => item.Kolicina)
+            </td>
+        
+            <td>
+                @Html.DisplayFor(modelItem => item.Usluga.CijenaUsluge)
+            </td>
+       
+            <td>
+                @Html.DisplayFor(modelItem => item.Usluga.UslugaID)
+            </td>
+        
+            <td>
+                @Html.DisplayFor(modelItem => item.Racun.RacunID)
+            </td>
+        
+            <td>
+                @Html.DisplayFor(modelItem => item.Racun.IznosUkupno)
+            </td>
+        </tr>
+    }
+    </table>
+   @Html.ActionLink("Natrag","index")

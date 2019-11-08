@@ -1,0 +1,31 @@
+﻿@model HoteliTest.ViewModels.UslugeViewModel
+
+@{
+    ViewBag.Title = "Odlazak";
+}
+
+<h2>Dodaj Rezervaciju Računu</h2>
+<br>
+<br>
+<br>
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>Cijena Rezervacije</th>
+        <th>Prijava</th>
+        <th>Odjava</th>
+        <th>Prezime</th>
+        <th>Popust</th>
+    </tr>
+    <tr>
+        <td>@Model.CijenaRezervacije</td>
+        <td>@Model.Prijava</td>
+        <td>@Model.Odjava</td>
+        <td>@Model.Prezime</td>
+        <td>@Model.Popust</td>
+    </tr>
+</table>
+<br>
+<br>
+<br>
+@Html.ActionLink("Napravi Racun","Index", new {controller="Racun",id=Model.RacunID },new { @class="btn btn-success"})
+

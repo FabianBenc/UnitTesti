@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HoteliTest.Models.Racun>
+
+@{
+    ViewBag.Title = "Racuni";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rezervacija.Gost.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Placeno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IznosUkupno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RacunID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Rezervacija.Gost.Prezime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Placeno)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IznosUkupno)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RacunID)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.RacunID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.RacunID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.RacunID }) |
+        @Html.ActionLink("Dodaj Stavku Racuna","Create","StavkaRacuna", new { id=item.RacunID},null)
+    </td>
+</tr>
+}
+
+</table>

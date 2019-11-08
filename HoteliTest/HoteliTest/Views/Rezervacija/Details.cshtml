@@ -1,0 +1,66 @@
+﻿@model HoteliTest.Models.Rezervacija
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rezervacija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gost.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gost.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soba.SobaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soba.SobaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Popust)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Popust)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervirano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervirano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prijava)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prijava)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Odjava)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Odjava)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RezervacijaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

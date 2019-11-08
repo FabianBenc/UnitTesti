@@ -1,0 +1,42 @@
+﻿@model HoteliTest.Models.Soba
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalji</h2>
+
+<div>
+    <h4>Soba</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotel.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotel.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipSobe.OpisSobe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipSobe.OpisSobe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojSobe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojSobe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SobaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HoteliTest.Models.Soba>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sobe</h2>
+
+<p>
+    @Html.ActionLink("Nova Soba", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ime Hotela
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.BrojSobe)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TipSobe.OpisSobe)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TipSobe.CijenaPoNoci)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hotel.Ime)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.BrojSobe)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.TipSobe.OpisSobe)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.TipSobe.CijenaPoNoci)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.SobaID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.SobaID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.SobaID })
+    </td>
+</tr>
+}
+
+</table>

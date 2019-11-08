@@ -1,0 +1,77 @@
+﻿@model IEnumerable<HoteliTest.Models.Rezervacija>
+
+@{
+    ViewBag.Title = "Rezervacije";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "OdabirDatuma")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Gost.Prezime)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Soba.TipSobe.OpisSobe)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Soba.BrojSobe)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Soba.TipSobe.CijenaPoNoci)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Rezervirano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prijava)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Odjava)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gost.Prezime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Soba.TipSobe.OpisSobe)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Soba.BrojSobe)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Soba.TipSobe.CijenaPoNoci)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Rezervirano)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Prijava)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Odjava)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.RezervacijaID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.RezervacijaID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.RezervacijaID }) |
+        @Html.ActionLink("Odlazak", "Odlazak", "Racun", new { id = item.RezervacijaID }, null)
+    </td>
+</tr>
+}
+
+</table>
