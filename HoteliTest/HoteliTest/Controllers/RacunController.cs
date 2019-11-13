@@ -37,7 +37,7 @@ namespace HoteliTest.Controllers
             catch (SqlException ex)
             {
                 logger.Error(ex);
-                throw new Exception("");
+                throw new Exception("uigi");
             }
         }
 
