@@ -104,10 +104,10 @@ namespace HoteliTest.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (SqlException ex) 
+            catch (Exception ex) 
             {
                 logger.Error(ex);
-                throw new Exception("Neuspjesno povezivanje s bazom podataka");
+                return View("Error", new HandleErrorInfo(ex, "Gost", "Create"));
             }
             return View(gost);
         }
@@ -146,9 +146,10 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DataException)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "unable");
+                    logger.Error(ex);
+                    return View("Error", new HandleErrorInfo(ex, "Gost", "EditPost"));
                 }
             }
             return View(gostToUpdate);
@@ -172,10 +173,10 @@ namespace HoteliTest.Controllers
                 }
                 return View(gost);
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("Neuspjesno povezivanje s bazom podataka");
+                return View("Error", new HandleErrorInfo(ex, "Gost", "Delete"));
             }
         }
 
@@ -191,10 +192,10 @@ namespace HoteliTest.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("Neuspjesno povezivanje s bazom podataka");
+                return View("Error", new HandleErrorInfo(ex, "Gost", "DeleteConfirmed"));
             }
         }
 

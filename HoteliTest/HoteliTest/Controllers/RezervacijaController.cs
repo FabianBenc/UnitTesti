@@ -76,11 +76,11 @@ namespace HoteliTest.Controllers
                    
                }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("Dodavanje u bazu nije moguce");
-                
+                return View("Error", new HandleErrorInfo(ex, "Rezervacija", "Create"));
+
             }
             return RedirectToAction("Index");
         }
@@ -119,9 +119,10 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DataException)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "unable");
+                    logger.Error(ex);
+                    return View("Error", new HandleErrorInfo(ex, "Rezervacija", "EditPost"));
                 }
             }
             return View(rezervacijaToUpdate);
@@ -203,7 +204,7 @@ namespace HoteliTest.Controllers
             catch(SystemException exception)
             {
                 logger.Error(exception);
-                throw new Exception("Nismo mogli pronaci nijednu dostupnu sobu");
+                return View("Error", new HandleErrorInfo(exception, "Rezervacija", "OdabirSobe"));
             }
         }
     }

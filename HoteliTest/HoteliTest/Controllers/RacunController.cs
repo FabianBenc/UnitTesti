@@ -34,10 +34,10 @@ namespace HoteliTest.Controllers
                 var racuni = db.Racuni.Include(r => r.Rezervacija);
                 return View(racuni.ToList());
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("uigi");
+                return View("Error", new HandleErrorInfo(ex, "Racun", "Index"));
             }
         }
 
@@ -79,10 +79,10 @@ namespace HoteliTest.Controllers
                 }
                 return View(racun);
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("Nebrem");
+                return View("Error", new HandleErrorInfo(ex, "Racun", "Create"));
             }
            
 
@@ -204,10 +204,10 @@ namespace HoteliTest.Controllers
 
                 return View(uslugeView);
             }
-            catch (NullReferenceException x)
+            catch (Exception x)
             {
                 logger.Error(x);
-                throw new Exception("Nesto je poslo u krivu");
+                return View("Error", new HandleErrorInfo(x, "Racun", "Odlazak"));
             }
         }
     }

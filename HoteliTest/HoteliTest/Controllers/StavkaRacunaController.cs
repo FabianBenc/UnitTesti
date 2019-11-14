@@ -57,10 +57,10 @@ namespace HoteliTest.Controllers
 
                 return View();
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("");
+                return View("Error", new HandleErrorInfo(ex, "StavkaRacuna", "Create"));
             }
         }
 
@@ -93,10 +93,10 @@ namespace HoteliTest.Controllers
                 }
 
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("");
+                return View("Error", new HandleErrorInfo(ex, "StavkaRacuna", "Create"));
             }
             ViewBag.UslugaID = new SelectList(db.Usluge, "UslugaID", "ImeUsluge", stavkaRacuna.UslugaID);
             ViewBag.RacunID = new SelectList(db.Racuni, "RacunID", "RacunID", stavkaRacuna.RacunID);

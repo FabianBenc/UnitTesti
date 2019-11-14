@@ -8,11 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using HoteliTest.DAL;
 using HoteliTest.Models;
+using NLog;
 
 namespace HoteliTest.Controllers
 {
     public class UslugaController : Controller
     {
+        private Logger logger = LogManager.GetCurrentClassLogger();
         private IHotelAC db = new HotelContext();
 
         public UslugaController() { }
@@ -101,9 +103,10 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DataException)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "unable");
+                    logger.Error(ex);
+                    return View("Error", new HandleErrorInfo(ex, "Usluga", "EditPost"));
                 }
             }
             return View(uslugaToUpdate);

@@ -12,3 +12,17 @@
    at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
 2019-11-14 09:00:07.2419|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
    at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
+2019-11-14 10:18:23.6549|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
+   at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
+2019-11-14 10:20:42.0818|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
+   at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
+2019-11-14 10:23:02.9316|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
+   at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
+2019-11-14 10:23:17.1891|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
+   at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
+2019-11-14 10:23:27.0142|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
+   at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
+2019-11-14 11:46:05.1636|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
+   at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168
+2019-11-14 11:47:15.2761|ERROR|HoteliTest.Controllers.RacunController|System.NullReferenceException: Object reference not set to an instance of an object.
+   at HoteliTest.Controllers.RacunController.Odlazak(Nullable`1 id, Nullable`1 racunID, Nullable`1 stavkaRacunaID, UslugeViewModel viewModel) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RacunController.cs:line 168

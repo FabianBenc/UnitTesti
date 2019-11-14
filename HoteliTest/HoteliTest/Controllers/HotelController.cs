@@ -47,10 +47,10 @@ namespace HoteliTest.Controllers
                 }
                 return View(hotel);
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("Nije uspjelo");
+                return View("Error", new HandleErrorInfo(ex, "Hotel", "Detalis"));
             }
         }
 
@@ -78,10 +78,10 @@ namespace HoteliTest.Controllers
 
                 return View(hotel);
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("Nije uspjelo");
+                return View("Error", new HandleErrorInfo(ex, "Hotel", "Detalis"));
 
             }
         }
@@ -120,9 +120,9 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DataException)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "unable");
+                    return View("Error", new HandleErrorInfo(ex, "Hotel", "EditPost"));
                 }
             }
             return View(hotelToUpdate);
@@ -145,10 +145,10 @@ namespace HoteliTest.Controllers
                 }
                 return View(hotel);
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.Error(ex);
-                throw new Exception("Nije uspjelo");
+                return View("Error", new HandleErrorInfo(ex, "Hotel", "Delete"));
             }
         }
 

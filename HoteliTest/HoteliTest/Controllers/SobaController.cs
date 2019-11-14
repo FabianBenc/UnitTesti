@@ -108,9 +108,9 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DataException)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "unable");
+                    return View("Error", new HandleErrorInfo(ex, "Soba", "EditPost"));
                 }
             }
             return View(sobaToUpdate);

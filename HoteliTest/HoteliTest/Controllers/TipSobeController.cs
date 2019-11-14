@@ -8,11 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using HoteliTest.DAL;
 using HoteliTest.Models;
+using NLog;
 
 namespace HoteliTest.Controllers
 {
     public class TipSobeController : Controller
     {
+        private Logger logger = LogManager.GetCurrentClassLogger();
         private IHotelAC db = new HotelContext();
 
         public TipSobeController() { }
@@ -100,9 +102,10 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DataException)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "unable");
+                    logger.Error(ex);
+                    return View("Error", new HandleErrorInfo(ex, "TipSobe", "Create"));
                 }
             }
             return View(tipSobaToUpdate);
