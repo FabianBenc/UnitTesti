@@ -21,5 +21,7 @@ namespace HoteliTest
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             
         }
+
+
     }
 }

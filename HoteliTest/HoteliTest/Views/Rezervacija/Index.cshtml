@@ -39,39 +39,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Gost.Prezime)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Soba.TipSobe.OpisSobe)
-    </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gost.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soba.TipSobe.OpisSobe)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.Soba.BrojSobe)
-    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soba.BrojSobe)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.Soba.TipSobe.CijenaPoNoci)
-    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soba.TipSobe.CijenaPoNoci)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.Rezervirano)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Prijava)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Odjava)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.RezervacijaID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.RezervacijaID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.RezervacijaID }) |
-        @Html.ActionLink("Odlazak", "Odlazak", "Racun", new { id = item.RezervacijaID }, null)
-    </td>
-</tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.Rezervirano)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijava)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odjava)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RezervacijaID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RezervacijaID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RezervacijaID }) |
+                @Html.ActionLink("Odlazak", "Odlazak", "Racun", new { id = item.RezervacijaID }, null)
+            </td>
+        </tr>
+    }
 
 </table>
+

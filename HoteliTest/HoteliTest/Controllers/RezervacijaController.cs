@@ -57,8 +57,10 @@ namespace HoteliTest.Controllers
                     rezervacijaView.Popust = 0;
                 }
 
-               if (ModelState.IsValid)
-               {
+                if (ModelState.IsValid)
+                {
+
+
                     Rezervacija rezervacije = new Rezervacija
                     {
                         RezervacijaID = rezervacijaView.RezervacijaID,
@@ -70,13 +72,17 @@ namespace HoteliTest.Controllers
                         Odjava = rezervacijaView.Odjava,
                     };
 
+
                     db.Rezervacije.Add(rezervacije);
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                   
-               }
+
+                }
+                
+               
+
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 logger.Error(ex);
                 return View("Error", new HandleErrorInfo(ex, "Rezervacija", "Create"));

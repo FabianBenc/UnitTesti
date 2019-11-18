@@ -27,7 +27,7 @@ namespace HoteliTest.DAL
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Properties<DateTime>()
+           modelBuilder.Properties<DateTime>()
                 .Configure(c => c.HasColumnType("datetime2"));
 
         }

@@ -215,6 +215,14 @@
     <Compile Include="Migrations\201911081147083_AddCurrency.designer.cs">
       <DependentUpon>201911081147083_AddCurrency.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911180853226_testing.cs" />
+    <Compile Include="Migrations\201911180853226_testing.designer.cs">
+      <DependentUpon>201911180853226_testing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911180857150_back.cs" />
+    <Compile Include="Migrations\201911180857150_back.designer.cs">
+      <DependentUpon>201911180857150_back.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Gost.cs" />
     <Compile Include="Models\Hotel.cs" />
@@ -452,6 +460,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911081147083_AddCurrency.resx">
       <DependentUpon>201911081147083_AddCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911180853226_testing.resx">
+      <DependentUpon>201911180853226_testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911180857150_back.resx">
+      <DependentUpon>201911180857150_back.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HoteliTest.Migrations.AddCurrency.resources" />
     <EmbeddedResource Include="obj\Debug\HoteliTest.Migrations.backtoold.resources" />

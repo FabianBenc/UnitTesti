@@ -13,12 +13,12 @@ namespace HoteliTest.ViewModels
 
         [Required, Display(Name = "Prijava")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Prijava { get; set; }
 
         [Required, Display(Name = "Odjava")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Odjava { get; set; }
         public int GostID { get; set; }
         public int SobaID { get; set; }
