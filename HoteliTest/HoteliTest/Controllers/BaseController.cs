@@ -17,7 +17,8 @@ namespace HoteliTest.Controllers
         {
             filterContext.ExceptionHandled = true;
             logger.Error(filterContext.Exception.Message);
-            filterContext.Result = View("Error", new HandleErrorInfo(filterContext.Exception, filterContext.RouteData.Values["controller"].ToString(), filterContext.RouteData.Values["action"].ToString()));
+            filterContext.Result = View("Error", new HandleErrorInfo(filterContext.Exception, filterContext.RouteData.Values["controller"].ToString(),
+                filterContext.RouteData.Values["action"].ToString()));
         }
     }
 }

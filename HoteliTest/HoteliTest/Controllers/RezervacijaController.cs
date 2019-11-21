@@ -55,8 +55,8 @@ namespace HoteliTest.Controllers
                     rezervacijaView.Popust = 0;
                 }
 
-                //if (ModelState.IsValid)
-               // {
+                if (ModelState.IsValid)
+                {
 
 
                     Rezervacija rezervacije = new Rezervacija
@@ -75,7 +75,7 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
 
-                //}
+                }
                 
                
 
