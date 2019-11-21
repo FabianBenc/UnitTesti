@@ -13,10 +13,9 @@ using NLog;
 
 namespace HoteliTest.Controllers
 {
-    public class HotelController : Controller
+    public class HotelController : BaseController
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private IHotelAC db = new HotelContext();
+       
 
         public HotelController() { }
 
@@ -34,8 +33,7 @@ namespace HoteliTest.Controllers
         // GET: Hotel/Details/5
         public ActionResult Details(int? id)
         {
-            try
-            {
+           
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -46,12 +44,7 @@ namespace HoteliTest.Controllers
                     return HttpNotFound();
                 }
                 return View(hotel);
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Hotel", "Detalis"));
-            }
+           
         }
 
         // GET: Hotel/Create
@@ -67,8 +60,7 @@ namespace HoteliTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "HotelID,Ime,Adresa,Lokacija")] Hotel hotel)
         {
-            try
-            {
+            
                 if (ModelState.IsValid)
                 {
                     db.Hoteli.Add(hotel);
@@ -77,13 +69,7 @@ namespace HoteliTest.Controllers
                 }
 
                 return View(hotel);
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Hotel", "Detalis"));
-
-            }
+           
         }
 
         // GET: Hotel/Edit/5
@@ -115,15 +101,10 @@ namespace HoteliTest.Controllers
             var hotelToUpdate = db.Hoteli.Find(id);
             if (TryUpdateModel(hotelToUpdate, "", new string[] { "Ime", "Adresa", "Lokacija"}))
             {
-                try
-                {
+                
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    return View("Error", new HandleErrorInfo(ex, "Hotel", "EditPost"));
-                }
+                
             }
             return View(hotelToUpdate);
 
@@ -132,8 +113,7 @@ namespace HoteliTest.Controllers
         // GET: Hotel/Delete/5
         public ActionResult Delete(int? id)
         {
-            try
-            {
+           
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -144,12 +124,7 @@ namespace HoteliTest.Controllers
                     return HttpNotFound();
                 }
                 return View(hotel);
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Hotel", "Delete"));
-            }
+           
         }
 
         // POST: Hotel/Delete/5

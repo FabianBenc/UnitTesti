@@ -13,10 +13,9 @@ using NLog;
 
 namespace HoteliTest.Controllers
 {
-    public class StavkaRacunaController : Controller
+    public class StavkaRacunaController : BaseController
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private IHotelAC db = new HotelContext();
+       
 
         public StavkaRacunaController() { }
 
@@ -50,18 +49,12 @@ namespace HoteliTest.Controllers
         // GET: StavkaRacuna/Create
         public ActionResult Create()
         {
-            try
-            {
+            
                 ViewBag.UslugaID = new SelectList(db.Usluge, "UslugaID", "ImeUsluge");
                 ViewBag.RacunID = new SelectList(db.Racuni, "RacunID", "RacunID");
 
                 return View();
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "StavkaRacuna", "Create"));
-            }
+            
         }
 
         // POST: StavkaRacuna/Create
@@ -71,8 +64,7 @@ namespace HoteliTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StavkaRacunaID,Kolicina")] StavkaRacuna stavkaRacuna, int ID, Usluga usluga)
         {
-            try
-            {
+            
 
                 if (ModelState.IsValid)
                 {
@@ -92,12 +84,7 @@ namespace HoteliTest.Controllers
                     return RedirectToAction("Index");
                 }
 
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "StavkaRacuna", "Create"));
-            }
+            
             ViewBag.UslugaID = new SelectList(db.Usluge, "UslugaID", "ImeUsluge", stavkaRacuna.UslugaID);
             ViewBag.RacunID = new SelectList(db.Racuni, "RacunID", "RacunID", stavkaRacuna.RacunID);
            

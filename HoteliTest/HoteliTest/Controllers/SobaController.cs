@@ -11,9 +11,9 @@ using HoteliTest.Models;
 
 namespace HoteliTest.Controllers
 {
-    public class SobaController : Controller
+    public class SobaController : BaseController
     {
-        private IHotelAC db = new HotelContext();
+       
 
         public SobaController() { }
 
@@ -103,15 +103,10 @@ namespace HoteliTest.Controllers
             var sobaToUpdate = db.Sobe.Find(id);
             if (TryUpdateModel(sobaToUpdate, "", new string[] { "HotelID", "BrojSobe", "TipSobeID"}))
             {
-                try
-                {
+                
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    return View("Error", new HandleErrorInfo(ex, "Soba", "EditPost"));
-                }
+                
             }
             return View(sobaToUpdate);
 

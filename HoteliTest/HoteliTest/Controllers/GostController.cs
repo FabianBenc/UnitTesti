@@ -14,10 +14,9 @@ using PagedList;
 
 namespace HoteliTest.Controllers
 {
-    public class GostController : Controller
+    public class GostController : BaseController
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private IHotelAC db = new HotelContext();
+        
 
         public GostController() { }
 
@@ -95,20 +94,14 @@ namespace HoteliTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "GostID,Ime,Prezime,Email,Adresa")] Gost gost)
         {
-            try
-            {
+           
                 if (ModelState.IsValid)
                 {
                     db.Gosti.Add(gost);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-            }
-            catch (Exception ex) 
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Gost", "Create"));
-            }
+           
             return View(gost);
         }
 
@@ -141,16 +134,10 @@ namespace HoteliTest.Controllers
             var gostToUpdate = db.Gosti.Find(id);
             if (TryUpdateModel(gostToUpdate, "", new string[] { "Ime", "Prezime", "Email","Adresa" }))
             {
-                try
-                {
+               
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex);
-                    return View("Error", new HandleErrorInfo(ex, "Gost", "EditPost"));
-                }
+               
             }
             return View(gostToUpdate);
            
@@ -159,8 +146,7 @@ namespace HoteliTest.Controllers
         // GET: Gost/Delete/5
         public ActionResult Delete(int? id)
         {
-            try
-            {
+           
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -172,12 +158,7 @@ namespace HoteliTest.Controllers
                     return HttpNotFound();
                 }
                 return View(gost);
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Gost", "Delete"));
-            }
+           
         }
 
         // POST: Gost/Delete/5
@@ -185,18 +166,12 @@ namespace HoteliTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
+            
                 Gost gost = db.Gosti.Find(id);
                 db.Gosti.Remove(gost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Gost", "DeleteConfirmed"));
-            }
+            
         }
 
         protected override void Dispose(bool disposing)

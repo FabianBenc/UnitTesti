@@ -14,10 +14,9 @@ using NLog;
 
 namespace HoteliTest.Controllers
 {
-    public class RacunController : Controller
+    public class RacunController : BaseController
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private IHotelAC db = new HotelContext();
+       
 
         public RacunController() { }
 
@@ -29,16 +28,10 @@ namespace HoteliTest.Controllers
         // GET: Racun
         public ActionResult Index()
         {
-            try
-            {
+            
                 var racuni = db.Racuni.Include(r => r.Rezervacija);
                 return View(racuni.ToList());
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Racun", "Index"));
-            }
+            
         }
 
         // GET: Racun/Details/5
@@ -62,8 +55,7 @@ namespace HoteliTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RacunID,Placeno,IznosUkupno,IznosDuga,RezervacijaID")] Racun racun, Rezervacija rezervacija, int id)
         {
-            try
-            {
+           
                 if (ModelState.IsValid)
                 {
                     var racuni = new Racun
@@ -78,12 +70,7 @@ namespace HoteliTest.Controllers
                     return RedirectToAction("Index", "Racun", racun.RacunID);
                 }
                 return View(racun);
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Racun", "Create"));
-            }
+           
            
 
             
@@ -101,25 +88,31 @@ namespace HoteliTest.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RezervacijaID = new SelectList(db.Rezervacije, "RezervacijaID", "RezervacijaID", racun.RezervacijaID);
+            //ViewBag.RezervacijaID = new SelectList(db.Rezervacije, "RezervacijaID", "RezervacijaID", racun.RezervacijaID);
             return View(racun);
         }
 
         // POST: Racun/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost,ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RacunID,Placeno,IznosUkupno,RezervacijaID")] Racun racun)
+        public ActionResult EditPost(int? id)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                //db.Entry(racun).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.RezervacijaID = new SelectList(db.Rezervacije, "RezervacijaID", "RezervacijaID", racun.RezervacijaID);
-            return View(racun);
+            var racunToUpdate = db.Racuni.Find(id);
+            if (TryUpdateModel(racunToUpdate, "", new string[] { "Prezime", "Placeno", "IznosUkupno", "RacunID" }))
+            {
+               
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                
+               
+            }
+            return View(racunToUpdate);
         }
 
         // GET: Racun/Delete/5
@@ -159,8 +152,7 @@ namespace HoteliTest.Controllers
 
         public ActionResult Odlazak(int? id, int? racunID, int? stavkaRacunaID, UslugeViewModel viewModel)
         {
-            try
-            {
+            
                 StavkaRacuna stavkaRacuna = db.StavkeRacuna.Find(stavkaRacunaID);
                 Rezervacija rezervacija = db.Rezervacije.Find(id);
                 Racun racun = db.Racuni.Find(racunID);
@@ -203,12 +195,7 @@ namespace HoteliTest.Controllers
                 db.SaveChanges();
 
                 return View(uslugeView);
-            }
-            catch (Exception x)
-            {
-                logger.Error(x);
-                return View("Error", new HandleErrorInfo(x, "Racun", "Odlazak"));
-            }
+           
         }
     }
 }

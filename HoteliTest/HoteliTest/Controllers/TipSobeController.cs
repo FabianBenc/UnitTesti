@@ -12,10 +12,9 @@ using NLog;
 
 namespace HoteliTest.Controllers
 {
-    public class TipSobeController : Controller
+    public class TipSobeController : BaseController
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private IHotelAC db = new HotelContext();
+        
 
         public TipSobeController() { }
 
@@ -97,16 +96,10 @@ namespace HoteliTest.Controllers
             var tipSobaToUpdate = db.TipSoba.Find(id);
             if (TryUpdateModel(tipSobaToUpdate, "", new string[] { "TipSobeID", "OpisSobe", "CijenaPoNoci"}))
             {
-                try
-                {
+               
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex);
-                    return View("Error", new HandleErrorInfo(ex, "TipSobe", "Create"));
-                }
+               
             }
             return View(tipSobaToUpdate);
 

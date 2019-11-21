@@ -13,10 +13,9 @@ using NLog;
 
 namespace HoteliTest.Controllers
 {
-    public class RezervacijaController : Controller
+    public class RezervacijaController : BaseController
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private IHotelAC db = new HotelContext();
+        
 
         public RezervacijaController() { }
 
@@ -50,15 +49,14 @@ namespace HoteliTest.Controllers
         // GET: Rezervacija/Create
         public ActionResult Create(RezervacijaView rezervacijaView)
         {
-            try
-            {
+           
                 if (rezervacijaView == null)
                 {
                     rezervacijaView.Popust = 0;
                 }
 
-                if (ModelState.IsValid)
-                {
+                //if (ModelState.IsValid)
+               // {
 
 
                     Rezervacija rezervacije = new Rezervacija
@@ -77,17 +75,11 @@ namespace HoteliTest.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
 
-                }
+                //}
                 
                
 
-            }
-            catch (SqlException ex)
-            {
-                logger.Error(ex);
-                return View("Error", new HandleErrorInfo(ex, "Rezervacija", "Create"));
-
-            }
+            
             return RedirectToAction("Index");
         }
 

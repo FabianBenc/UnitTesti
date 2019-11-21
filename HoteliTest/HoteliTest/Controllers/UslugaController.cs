@@ -12,10 +12,9 @@ using NLog;
 
 namespace HoteliTest.Controllers
 {
-    public class UslugaController : Controller
+    public class UslugaController : BaseController
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private IHotelAC db = new HotelContext();
+        
 
         public UslugaController() { }
 
@@ -98,16 +97,10 @@ namespace HoteliTest.Controllers
             var uslugaToUpdate = db.Usluge.Find(id);
             if (TryUpdateModel(uslugaToUpdate, "", new string[] { "Ime", "Prezime", "Email", "Adresa" }))
             {
-                try
-                {
+                
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex);
-                    return View("Error", new HandleErrorInfo(ex, "Usluga", "EditPost"));
-                }
+               
             }
             return View(uslugaToUpdate);
         }
