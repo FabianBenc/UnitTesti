@@ -170,9 +170,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiControllers\GostController.cs" />
+    <Compile Include="Controllers\ApiControllers\HotelController.cs" />
+    <Compile Include="Controllers\ApiControllers\RacunController.cs" />
+    <Compile Include="Controllers\ApiControllers\RezervacijaController.cs" />
+    <Compile Include="Controllers\ApiControllers\SobaController.cs" />
+    <Compile Include="Controllers\ApiControllers\StavkaRacunaController.cs" />
+    <Compile Include="Controllers\ApiControllers\TipSobeController.cs" />
+    <Compile Include="Controllers\ApiControllers\UslugaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GostController.cs" />
@@ -185,6 +195,14 @@
     <Compile Include="Controllers\TipSobeController.cs" />
     <Compile Include="Controllers\UslugaController.cs" />
     <Compile Include="DAL\HotelContext.cs" />
+    <Compile Include="DTO\GostDTO.cs" />
+    <Compile Include="DTO\HotelDTO.cs" />
+    <Compile Include="DTO\RacunDTO.cs" />
+    <Compile Include="DTO\RezervacijaDTO.cs" />
+    <Compile Include="DTO\SobaDTO.cs" />
+    <Compile Include="DTO\StavkaRacunaDTO.cs" />
+    <Compile Include="DTO\TipSobeDTO.cs" />
+    <Compile Include="DTO\UslugaDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
