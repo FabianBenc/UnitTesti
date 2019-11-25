@@ -15,7 +15,7 @@ namespace HoteliTest.Controllers
 {
     public class RezervacijaController : BaseController
     {
-        
+
 
         public RezervacijaController() { }
 
@@ -49,37 +49,37 @@ namespace HoteliTest.Controllers
         // GET: Rezervacija/Create
         public ActionResult Create(RezervacijaView rezervacijaView)
         {
-           
-                if (rezervacijaView == null)
+
+            if (rezervacijaView == null)
+            {
+                rezervacijaView.Popust = 0;
+            }
+
+            if (ModelState.IsValid)
+            {
+
+
+                Rezervacija rezervacije = new Rezervacija
                 {
-                    rezervacijaView.Popust = 0;
-                }
-
-                if (ModelState.IsValid)
-                {
-
-
-                    Rezervacija rezervacije = new Rezervacija
-                    {
-                        RezervacijaID = rezervacijaView.RezervacijaID,
-                        SobaID = rezervacijaView.SobaID,
-                        Rezervirano = rezervacijaView.Rezervirano,
-                        Popust = rezervacijaView.Popust ?? 0,
-                        GostID = rezervacijaView.GostID,
-                        Prijava = rezervacijaView.Prijava,
-                        Odjava = rezervacijaView.Odjava,
-                    };
+                    RezervacijaID = rezervacijaView.RezervacijaID,
+                    SobaID = rezervacijaView.SobaID,
+                    Rezervirano = rezervacijaView.Rezervirano,
+                    Popust = rezervacijaView.Popust ?? 0,
+                    GostID = rezervacijaView.GostID,
+                    Prijava = rezervacijaView.Prijava,
+                    Odjava = rezervacijaView.Odjava,
+                };
 
 
-                    db.Rezervacije.Add(rezervacije);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                db.Rezervacije.Add(rezervacije);
+                db.SaveChanges();
+                return RedirectToAction("Index");
 
-                }
-                
-               
+            }
 
-            
+
+
+
             return RedirectToAction("Index");
         }
 
@@ -101,7 +101,7 @@ namespace HoteliTest.Controllers
         // POST: Rezervacija/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,ActionName("Edit")]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult EditPost(int? id)
         {
@@ -110,18 +110,14 @@ namespace HoteliTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var rezervacijaToUpdate = db.Rezervacije.Find(id);
-            if (TryUpdateModel(rezervacijaToUpdate, "", new string[] { "Prezime", "Rezervirano", "Prijava","Odjava" }))
+            if (TryUpdateModel(rezervacijaToUpdate, "", new string[] { "Prezime", "Rezervirano", "Prijava", "Odjava" }))
             {
-                try
-                {
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex);
-                    return View("Error", new HandleErrorInfo(ex, "Rezervacija", "EditPost"));
-                }
+
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+
             }
             return View(rezervacijaToUpdate);
         }
@@ -176,34 +172,28 @@ namespace HoteliTest.Controllers
 
         public ActionResult OdabirSobe(RezervacijaView rezervacijaView)
         {
-            try
-            {
-                var velicinaOdabira = new TimeRange(rezervacijaView.Prijava, rezervacijaView.Odjava);
 
-                var rezerviraj = db.Rezervacije.ToList();
-                var nedostupneSobeID = rezerviraj
-                    .Where(r => velicinaOdabira.IntersectsWith(new TimeRange(r.Prijava, r.Odjava, true)))
-                    .Select(r => r.SobaID).ToList();
+            var velicinaOdabira = new TimeRange(rezervacijaView.Prijava, rezervacijaView.Odjava);
 
-                var dostupneSobe = db.Sobe.Where(r => !nedostupneSobeID.Contains(r.SobaID));
+            var rezerviraj = db.Rezervacije.ToList();
+            var nedostupneSobeID = rezerviraj
+                .Where(r => velicinaOdabira.IntersectsWith(new TimeRange(r.Prijava, r.Odjava, true)))
+                .Select(r => r.SobaID).ToList();
 
-                rezervacijaView.Sobe = dostupneSobe;
-                ViewBag.GostID = new SelectList((from s in db.Gosti.ToList()
-                                                 select new
-                                                 {
-                                                     GostID= s.GostID,
-                                                     Ime = s.Prezime
-                                                 }),
-                                               "GostID", "Ime", null);
-              
-                return View(rezervacijaView);
+            var dostupneSobe = db.Sobe.Where(r => !nedostupneSobeID.Contains(r.SobaID));
 
-            }
-            catch(SystemException exception)
-            {
-                logger.Error(exception);
-                return View("Error", new HandleErrorInfo(exception, "Rezervacija", "OdabirSobe"));
-            }
+            rezervacijaView.Sobe = dostupneSobe;
+            ViewBag.GostID = new SelectList((from s in db.Gosti.ToList()
+                                             select new
+                                             {
+                                                 GostID = s.GostID,
+                                                 Ime = s.Prezime
+                                             }),
+                                           "GostID", "Ime", null);
+
+            return View(rezervacijaView);
+
+
         }
     }
 }
