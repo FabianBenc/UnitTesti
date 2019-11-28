@@ -56,7 +56,7 @@ namespace HoteliTest.Controllers.ApiControllers
             db.StavkeRacuna.Add(Mapper.Map<StavkaRacunaDTO, StavkaRacuna>(stavka));
             db.SaveChanges();
 
-            return Ok("Dodana je nova stavka");
+            return Ok(stavka);
         }
 
         [HttpPut]

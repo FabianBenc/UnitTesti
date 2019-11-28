@@ -43,7 +43,7 @@ namespace HoteliTest.Controllers.ApiControllers
             db.Racuni.Add(Mapper.Map<RacunDTO, Racun>(racun));
             db.SaveChanges();
 
-            return Ok("Dodan je novi racun");
+            return Ok(racun);
         }
 
         [HttpPut]

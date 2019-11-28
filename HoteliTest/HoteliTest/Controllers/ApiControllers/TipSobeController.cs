@@ -43,7 +43,7 @@ namespace HoteliTest.Controllers.ApiControllers
             db.TipSoba.Add(Mapper.Map<TipSobeDTO, TipSobe>(tipsobe));
             db.SaveChanges();
 
-            return Ok("Dodan je novi tip sobe");
+            return Ok(tipsobe);
         }
 
         [HttpPut]

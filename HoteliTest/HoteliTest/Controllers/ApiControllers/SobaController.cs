@@ -50,7 +50,7 @@ namespace HoteliTest.Controllers.ApiControllers
             db.Sobe.Add(Mapper.Map<SobaDTO, Soba>(soba));
             db.SaveChanges();
 
-            return Ok("Dodana je nova soba");
+            return Ok(soba);
         }
 
         [HttpPut]

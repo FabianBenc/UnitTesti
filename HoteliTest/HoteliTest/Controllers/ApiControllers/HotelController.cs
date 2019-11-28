@@ -44,7 +44,7 @@ namespace HoteliTest.Controllers.ApiControllers
             db.Hoteli.Add(Mapper.Map<HotelDTO, Hotel>(hotel));
             db.SaveChanges();
 
-            return Ok("Dodan je novi hotel");
+            return Ok(hotel);
         }
 
         [HttpPut]

@@ -43,7 +43,7 @@ namespace HoteliTest.Controllers.ApiControllers
             db.Usluge.Add(Mapper.Map<UslugaDTO, Usluga>(usluga));
             db.SaveChanges();
 
-            return Ok("Dodana nova usluga");
+            return Ok(usluga);
         }
 
         [HttpPut]
