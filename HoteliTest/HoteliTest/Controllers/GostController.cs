@@ -136,26 +136,6 @@ namespace HoteliTest.Controllers
             return View(gost);
         }
 
-        /*[HttpPost,ActionName("Edit")]
-    [ValidateAntiForgeryToken]
-    public ActionResult EditPost(int? id)
-    {
-        if (id == null)
-        {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-        var gostToUpdate = db.Gosti.Find(id);
-        if (TryUpdateModel(gostToUpdate, "", new string[] { "Ime", "Prezime", "Email","Adresa" }))
-        {
-
-                db.SaveChanges();
-                return RedirectToAction("Index");
-
-        }
-        return View(gostToUpdate);
-
-    }*/
-
         // GET: Gost/Delete/5
         public ActionResult Delete(int? id)
         {

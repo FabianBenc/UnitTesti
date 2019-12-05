@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseControllerUTest.cs" />
+    <Compile Include="Controllers\ErrorControllerUTest.cs" />
     <Compile Include="Controllers\GostControllerUTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestInicijalizacija.cs" />
