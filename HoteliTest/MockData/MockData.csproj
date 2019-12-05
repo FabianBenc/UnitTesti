@@ -68,11 +68,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MockHotel_Data.cs" />
+    <Compile Include="ModelLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HoteliTest\HoteliTest.csproj">
+      <Project>{5e0c35a3-5174-4860-a23d-86f6eb55f99e}</Project>
+      <Name>HoteliTest</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

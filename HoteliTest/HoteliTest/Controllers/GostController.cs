@@ -123,25 +123,38 @@ namespace HoteliTest.Controllers
         // POST: Gost/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        public ActionResult Edit([Bind(Include = "GostID,Ime,Prezime,Email,Adresa")] Gost gost)
         {
-            if (id == null)
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.ChangeState<Gost>(gost);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            var gostToUpdate = db.Gosti.Find(id);
-            if (TryUpdateModel(gostToUpdate, "", new string[] { "Ime", "Prezime", "Email","Adresa" }))
-            {
-               
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-               
-            }
-            return View(gostToUpdate);
-           
+            return View(gost);
         }
+
+        /*[HttpPost,ActionName("Edit")]
+    [ValidateAntiForgeryToken]
+    public ActionResult EditPost(int? id)
+    {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var gostToUpdate = db.Gosti.Find(id);
+        if (TryUpdateModel(gostToUpdate, "", new string[] { "Ime", "Prezime", "Email","Adresa" }))
+        {
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+        }
+        return View(gostToUpdate);
+
+    }*/
 
         // GET: Gost/Delete/5
         public ActionResult Delete(int? id)
