@@ -67,8 +67,8 @@ namespace HoteliTest.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.HotelID = new SelectList(db.Hoteli, "HotelID", "Ime", soba.HotelID);
-            ViewBag.TipSobeID = new SelectList(db.TipSoba, "TipSobeID", "OpisSobe", soba.TipSobeID);
+           ViewBag.HotelID = new SelectList(db.Hoteli, "HotelID", "Ime", soba.HotelID);
+           ViewBag.TipSobeID = new SelectList(db.TipSoba, "TipSobeID", "OpisSobe", soba.TipSobeID);
             return View(soba);
         }
 
@@ -84,32 +84,25 @@ namespace HoteliTest.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.HotelID = new SelectList(db.Hoteli, "HotelID", "Ime", soba.HotelID);
-            ViewBag.TipSobeID = new SelectList(db.TipSoba, "TipSobeID", "OpisSobe", soba.TipSobeID);
+           // ViewBag.HotelID = new SelectList(db.Hoteli, "HotelID", "Ime", soba.HotelID);
+            //ViewBag.TipSobeID = new SelectList(db.TipSoba, "TipSobeID", "OpisSobe", soba.TipSobeID);
             return View(soba);
         }
 
         // POST: Soba/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        public ActionResult Edit([Bind(Include = "SobaID,HotelID,BrojSobe,TipSobeID")] Soba soba)
         {
-            if (id == null)
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.ChangeState<Soba>(soba);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            var sobaToUpdate = db.Sobe.Find(id);
-            if (TryUpdateModel(sobaToUpdate, "", new string[] { "HotelID", "BrojSobe", "TipSobeID"}))
-            {
-                
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                
-            }
-            return View(sobaToUpdate);
-
+            return View(soba);
         }
 
         //hotelid ime tip sobe id opis sobe

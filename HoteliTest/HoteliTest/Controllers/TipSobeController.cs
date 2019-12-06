@@ -85,24 +85,17 @@ namespace HoteliTest.Controllers
         // POST: TipSobe/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-       [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        public ActionResult Edit([Bind(Include = "TipSobeID,OpisSobe,CijenaPoNoci")] TipSobe tipSobe)
         {
-            if (id == null)
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.ChangeState<TipSobe>(tipSobe);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            var tipSobaToUpdate = db.TipSoba.Find(id);
-            if (TryUpdateModel(tipSobaToUpdate, "", new string[] { "TipSobeID", "OpisSobe", "CijenaPoNoci"}))
-            {
-               
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-               
-            }
-            return View(tipSobaToUpdate);
-
+            return View(tipSobe);
         }
 
         // GET: TipSobe/Delete/5

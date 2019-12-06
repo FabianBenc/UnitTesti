@@ -16,13 +16,11 @@ namespace HoteliTest.Controllers
 
         public ActionResult FileNotFound()
         {
-            //Response.StatusCode = 404;
             return View("FileNotFound");
         }
 
         public ActionResult InternalServerError()
         {
-           // Response.StatusCode = 500;
             return View("InternalServerError");
         }
     }

@@ -18,7 +18,7 @@ namespace UnitT3st.Controllers
         private GostController gostController = new GostController(testContext.Object);
 
         [TestMethod]
-        public void ConstructorDefaultCOnstructorVracaNull()
+        public void ConstructorDefaultConstructorVracaNotNull()
         {
             var gostController = new GostController();
 
@@ -32,14 +32,8 @@ namespace UnitT3st.Controllers
             var rezultat = gostController.Index("test","test","test",1) as ViewResult;
 
             Assert.IsNotNull(rezultat, "View je null");
-        }
-
-        [TestMethod]
-        public void IndexViewResultVracaTocanTipObjekta()
-        {
-            var rezultat = gostController.Index("test", "test", "test", 1) as ViewResult;
-
             Assert.IsInstanceOfType(rezultat.Model, typeof(IEnumerable<Gost>), "Krivi tip modela");
+
         }
 
         [TestMethod]
@@ -63,7 +57,7 @@ namespace UnitT3st.Controllers
         public void CreateCreatePostNotValidVracaView()
         {
             Gost gost = ModelLoader.GetInvalidGost();
-            gostController.ModelState.AddModelError("Prezme", "Prezime je obavezno");
+            gostController.ModelState.AddModelError("Prezime", "Prezime je obavezno");
 
             var rezultat = gostController.Create(gost) as ViewResult;
 

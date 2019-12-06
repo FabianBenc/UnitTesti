@@ -90,26 +90,19 @@ namespace HoteliTest.Controllers
         // POST: Hotel/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        public ActionResult Edit([Bind(Include = "HotelID,Ime,Lokacija,Adresa")]Hotel hotel)
         {
-            if (id == null)
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.ChangeState<Hotel>(hotel);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            var hotelToUpdate = db.Hoteli.Find(id);
-            if (TryUpdateModel(hotelToUpdate, "", new string[] { "Ime", "Adresa", "Lokacija"}))
-            {
-                
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                
-            }
-            return View(hotelToUpdate);
-
+            return View(hotel);
         }
-
+        
         // GET: Hotel/Delete/5
         public ActionResult Delete(int? id)
         {

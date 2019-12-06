@@ -36,6 +36,14 @@ namespace MockData
             SetUpEntity(ModelLoader.GetGosti(), context, gostSet);
             context.Setup(c => c.Gosti).Returns(gostSet.Object);
 
+            Mock<DbSet<Hotel>> hotelSet = new Mock<DbSet<Hotel>>();
+            SetUpEntity(ModelLoader.GetHoteli(), context, hotelSet);
+            context.Setup(c => c.Hoteli).Returns(hotelSet.Object);
+
+            Mock<DbSet<Soba>> sobaSet = new Mock<DbSet<Soba>>();
+            SetUpEntity(ModelLoader.GetSobe(), context, sobaSet);
+            context.Setup(c => c.Sobe).Returns(sobaSet.Object);
+
             return context;
         }
 
