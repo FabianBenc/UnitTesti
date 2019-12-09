@@ -39,7 +39,8 @@ namespace UnitT3st.Controllers
         [TestMethod]
         public void CreateViewResultVracaNotNull()
         {
-            var rezultat = sobaController.Create() as ViewResult;
+            var controller = new SobaController();
+            var rezultat = controller.Create() as ViewResult;
 
             Assert.IsNotNull(rezultat, "View je null");
         }
@@ -50,7 +51,7 @@ namespace UnitT3st.Controllers
             Soba soba = ModelLoader.GetValidSoba();
             var rezultat = sobaController.Create(soba);
 
-            Assert.IsInstanceOfType(rezultat, typeof(RedirectToRouteResult), "Uspjesno stvaranje gosta ne vraca preusmjeravanje");
+            Assert.IsInstanceOfType(rezultat, typeof(RedirectToRouteResult), "Uspjesno stvaranje sobe ne vraca preusmjeravanje");
         }
 
         [TestMethod]
@@ -124,7 +125,7 @@ namespace UnitT3st.Controllers
 
             var rezultat = sobaController.Edit(sobaIDnull) as HttpStatusCodeResult;
 
-            Assert.AreEqual((int)HttpStatusCode.BadRequest, rezultat.StatusCode, "Null gost ID ne vraca BadRequest");
+            Assert.AreEqual((int)HttpStatusCode.BadRequest, rezultat.StatusCode, "Null soba ID ne vraca BadRequest");
         }
 
         [TestMethod]
@@ -133,7 +134,7 @@ namespace UnitT3st.Controllers
             Soba soba = ModelLoader.GetInvalidSoba();
             HttpStatusCodeResult rezultat = sobaController.Edit(nepostojeciID) as HttpStatusCodeResult;
 
-            Assert.IsInstanceOfType(rezultat, typeof(HttpNotFoundResult), "Nevaljani gost ne vraca Not Found");
+            Assert.IsInstanceOfType(rezultat, typeof(HttpNotFoundResult), "Nevaljana soba ne vraca Not Found");
         }
 
         [TestMethod]
@@ -160,7 +161,7 @@ namespace UnitT3st.Controllers
             HttpStatusCodeResult rezultat = sobaController.Delete(nepostojeciID) as HttpStatusCodeResult;
 
 
-            Assert.IsInstanceOfType(rezultat, typeof(HttpNotFoundResult), "Nevaljani gost ne vraca Not Found");
+            Assert.IsInstanceOfType(rezultat, typeof(HttpNotFoundResult), "Nevaljana soba ne vraca Not Found");
         }
 
         [TestMethod]

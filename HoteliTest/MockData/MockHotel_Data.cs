@@ -44,6 +44,26 @@ namespace MockData
             SetUpEntity(ModelLoader.GetSobe(), context, sobaSet);
             context.Setup(c => c.Sobe).Returns(sobaSet.Object);
 
+            Mock<DbSet<StavkaRacuna>> stavkaSet = new Mock<DbSet<StavkaRacuna>>();
+            SetUpEntity(ModelLoader.GetStavke(), context, stavkaSet);
+            context.Setup(c => c.StavkeRacuna).Returns(stavkaSet.Object);
+
+            Mock<DbSet<Usluga>> uslugaSet = new Mock<DbSet<Usluga>>();
+            SetUpEntity(ModelLoader.GetUsluge(), context, uslugaSet);
+            context.Setup(c => c.Usluge).Returns(uslugaSet.Object);
+
+            Mock<DbSet<Racun>> racunSet = new Mock<DbSet<Racun>>();
+            SetUpEntity(ModelLoader.GetRacuni(), context, racunSet);
+            context.Setup(c => c.Racuni).Returns(racunSet.Object);
+
+            Mock<DbSet<TipSobe>> tipSobeSet = new Mock<DbSet<TipSobe>>();
+            SetUpEntity(ModelLoader.GetTipSoba(), context, tipSobeSet);
+            context.Setup(c => c.TipSoba).Returns(tipSobeSet.Object);
+
+            Mock<DbSet<Rezervacija>> rezervacijaSet = new Mock<DbSet<Rezervacija>>();
+            SetUpEntity(ModelLoader.GetRezervacije(), context, rezervacijaSet);
+            context.Setup(c => c.Rezervacije).Returns(rezervacijaSet.Object);
+
             return context;
         }
 

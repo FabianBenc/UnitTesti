@@ -67,8 +67,8 @@ namespace HoteliTest.Controllers
                 return RedirectToAction("Index");
             }
 
-           ViewBag.HotelID = new SelectList(db.Hoteli, "HotelID", "Ime", soba.HotelID);
-           ViewBag.TipSobeID = new SelectList(db.TipSoba, "TipSobeID", "OpisSobe", soba.TipSobeID);
+          // ViewBag.HotelID = new SelectList(db.Hoteli, "HotelID", "Ime", soba.HotelID);
+           //ViewBag.TipSobeID = new SelectList(db.TipSoba, "TipSobeID", "OpisSobe", soba.TipSobeID);
             return View(soba);
         }
 

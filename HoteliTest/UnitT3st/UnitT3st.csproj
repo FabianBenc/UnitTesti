@@ -104,7 +104,7 @@
     <Compile Include="Controllers\RezervacijaControllerUTest.cs" />
     <Compile Include="Controllers\SobaControllerUTest.cs" />
     <Compile Include="Controllers\StavkaRacunaControllerUTest.cs" />
-    <Compile Include="Controllers\TipSobeUTest.cs" />
+    <Compile Include="Controllers\TipSobeControllerUTest.cs" />
     <Compile Include="Controllers\UslugaControllerUTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestInicijalizacija.cs" />

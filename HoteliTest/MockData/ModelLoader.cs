@@ -1,4 +1,5 @@
 ﻿using HoteliTest.Models;
+using HoteliTest.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,6 +96,199 @@ namespace MockData
                 BrojSobe = 3,
                 TipSobeID = 2,
                 HotelID = 1
+            };
+        }
+
+        public static ICollection<StavkaRacuna> GetStavke()
+        {
+            return new List<StavkaRacuna>
+            {
+
+                new StavkaRacuna{StavkaRacunaID=1, Kolicina=2,UslugaID=1,RacunID=1,},
+                new StavkaRacuna{StavkaRacunaID=2,Kolicina=5,UslugaID=2 ,RacunID=2}
+            };
+        }
+
+        public static StavkaRacuna GetInvalidStavka()
+        {
+            return new StavkaRacuna
+            {
+                Kolicina = 100,
+                UslugaID = 2,
+                RacunID = 1,
+            };
+        }
+
+        public static StavkaRacuna GetValidStavka()
+        {
+            return new StavkaRacuna
+            {
+                StavkaRacunaID = 2,
+                Kolicina = 3,
+                UslugaID = 2,
+                RacunID = 1
+            };
+        }
+
+        public static ICollection<Usluga> GetUsluge()
+        {
+            return new List<Usluga>
+            {
+
+                new Usluga{UslugaID=1,CijenaUsluge=100,ImeUsluge="Vino"},
+                new Usluga{UslugaID=2,CijenaUsluge=200,ImeUsluge="Masaza"}
+            };
+        }
+
+        public static Usluga GetInvalidUsluga()
+        {
+            return new Usluga
+            {
+                UslugaID = 200,
+                ImeUsluge = "Test",
+            };
+        }
+
+        public static Usluga GetValidUsluga()
+        {
+            return new Usluga
+            {
+                UslugaID = 2,
+                CijenaUsluge=200,
+                ImeUsluge="Masaza"
+            };
+        }
+
+        public static ICollection<Racun> GetRacuni()
+        {
+            return new List<Racun>
+            {
+
+                new Racun{RacunID=1,RezervacijaID=1,Placeno=true,IznosUkupno=1000},
+                new Racun{RacunID=2,RezervacijaID=2,Placeno=true,IznosUkupno=2000}
+            };
+        }
+
+        public static Racun GetInvalidRacun()
+        {
+            return new Racun
+            {
+                RacunID = 100,
+                Placeno = true,
+                IznosUkupno = 1000
+            };
+        }
+
+        public static Racun GetValidRacun()
+        {
+            return new Racun
+            {
+                RacunID = 1,
+                RezervacijaID = 1,
+                Placeno = true,
+                IznosUkupno = 1000
+            };
+        }
+
+        public static ICollection<TipSobe> GetTipSoba()
+        {
+            return new List<TipSobe>
+            {
+
+                new TipSobe{TipSobeID=1,OpisSobe="test",CijenaPoNoci=100},
+                new TipSobe{TipSobeID=2,OpisSobe="test1",CijenaPoNoci=200}
+            };
+        }
+
+        public static TipSobe GetInvalidTipSobe()
+        {
+            return new TipSobe
+            {
+                TipSobeID = 1,
+                OpisSobe = "test",
+            };
+        }
+
+        public static TipSobe GetValidTipSobe()
+        {
+            return new TipSobe
+            {
+                TipSobeID = 1,
+                OpisSobe = "test1",
+                CijenaPoNoci = 1000
+            };
+        }
+
+        public static ICollection<Rezervacija> GetRezervacije()
+        {
+            return new List<Rezervacija>
+            {
+                new Rezervacija 
+                {
+                    RezervacijaID=1,
+                    GostID=1,
+                    SobaID=1,
+                    Prijava=new DateTime(2020,1,1),
+                    Odjava=new DateTime(2020,2,2),
+                    Popust=10,
+                    Rezervirano=true,
+                },
+                new Rezervacija
+                {
+                    RezervacijaID=2,
+                    GostID=2,
+                    SobaID=2,
+                    Prijava=new DateTime(2021,1,1),
+                    Odjava=new DateTime(2021,2,2),
+                    Popust=20,
+                    Rezervirano=true,
+                },
+            };
+        }
+
+        public static Rezervacija GetInvalidRezervacija()
+        {
+            return new Rezervacija
+            {
+                RezervacijaID = 2,
+                SobaID = 2,
+                Prijava = new DateTime(2021, 1, 1),
+                Odjava = new DateTime(2021, 2, 2),
+                Popust = 20,
+                Rezervirano = true,
+            };
+        }
+
+        /*public static ICollection<RezervacijaView> GetRezervacijaView()
+        {
+            return new List<RezervacijaView>
+            {
+                new RezervacijaView
+                {
+                RezervacijaID = 3,
+                GostID = 3,
+                SobaID = 2,
+                Popust = 50,
+                Rezervirano=true,
+                BrojSobe=200,
+                Prijava = new DateTime(2021, 1, 1),
+                Odjava = new DateTime(2021, 2, 2)
+                }
+            };
+        }*/
+
+        public static RezervacijaView GetValidRezervacijaView()
+        {
+            return new RezervacijaView
+            {
+                RezervacijaID = 3,
+                GostID = 3,
+                SobaID = 2,
+                Popust = 50,
+                Rezervirano = true,
+                BrojSobe = 200,
+                Prijava = new DateTime(2021, 1, 1),
+                Odjava = new DateTime(2021, 2, 2)
             };
         }
     }
