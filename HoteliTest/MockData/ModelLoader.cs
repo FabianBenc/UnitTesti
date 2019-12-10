@@ -250,7 +250,21 @@ namespace MockData
         {
             return new Rezervacija
             {
+                RezervacijaID = 3,
+                SobaID = 3,
+                Prijava = new DateTime(2021, 1, 1),
+                Odjava = new DateTime(2021, 2, 2),
+                Popust = 20,
+                Rezervirano = true,
+            };
+        }
+
+        public static Rezervacija GetValidRezervacija()
+        {
+            return new Rezervacija
+            {
                 RezervacijaID = 2,
+                GostID=2,
                 SobaID = 2,
                 Prijava = new DateTime(2021, 1, 1),
                 Odjava = new DateTime(2021, 2, 2),
@@ -259,37 +273,51 @@ namespace MockData
             };
         }
 
-        /*public static ICollection<RezervacijaView> GetRezervacijaView()
-        {
-            return new List<RezervacijaView>
-            {
-                new RezervacijaView
-                {
-                RezervacijaID = 3,
-                GostID = 3,
-                SobaID = 2,
-                Popust = 50,
-                Rezervirano=true,
-                BrojSobe=200,
-                Prijava = new DateTime(2021, 1, 1),
-                Odjava = new DateTime(2021, 2, 2)
-                }
-            };
-        }*/
+         public static RezervacijaView GetValidRezervacijaView()
+         {
+             return new RezervacijaView
+             {
+                 RezervacijaID = 1,
+                 GostID = 1,
+                 SobaID = 1,
+                 Popust = 10,
+                 Rezervirano = true,
+                 Prijava = new DateTime(2020, 1, 1),
+                 Odjava = new DateTime(2020, 2, 2)
+             };
+         }
 
-        public static RezervacijaView GetValidRezervacijaView()
+        public static RezervacijaView GetInvalidRezervacijaView()
         {
             return new RezervacijaView
             {
-                RezervacijaID = 3,
-                GostID = 3,
-                SobaID = 2,
-                Popust = 50,
+                RezervacijaID = 1,
+                GostID = 1,
+                SobaID = 1,
+                Popust = 10,
                 Rezervirano = true,
-                BrojSobe = 200,
-                Prijava = new DateTime(2021, 1, 1),
-                Odjava = new DateTime(2021, 2, 2)
+                Prijava = new DateTime(2020, 2, 1),
+                Odjava = new DateTime(2020, 1, 2)
             };
+        }
+
+        public static UslugeViewModel GetValidUslugaViewModel()
+        {
+            return new UslugeViewModel
+            {
+            CijenaRezervacije=1000,
+            Prijava=new DateTime(2021,1, 1),
+            Odjava = new DateTime(2021, 2, 2),
+            Prezime="Test1",
+            RezervacijaID=1,
+            Popust=10,
+            };
+        }
+
+        public static UslugeViewModel GetInvalidUslugaViewModel()
+        {
+            return new UslugeViewModel
+            { };
         }
     }
 }

@@ -101,26 +101,41 @@ namespace HoteliTest.Controllers
         // POST: Rezervacija/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        public ActionResult Edit([Bind(Include = "RezervacijaID,GostID,SobaID,Rezervirano,Prijava,Odjava")] Rezervacija rezervacija)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var rezervacijaToUpdate = db.Rezervacije.Find(id);
-            if (TryUpdateModel(rezervacijaToUpdate, "", new string[] { "Prezime", "Rezervirano", "Prijava", "Odjava" }))
-            {
+                if (ModelState.IsValid)
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-
-                db.SaveChanges();
-                return RedirectToAction("Index");
-
-
-            }
-            return View(rezervacijaToUpdate);
+                ViewBag.GostID = new SelectList(db.Gosti, "GostID", "Ime", rezervacija.GostID);
+                ViewBag.RoomId = new SelectList(db.Sobe, "SobaID", "SobaID", rezervacija.SobaID);
+                return View(rezervacija);
         }
+
+        /*[HttpPost, ActionName("Edit")]
+    [ValidateAntiForgeryToken]
+    public ActionResult EditPost(int? id)
+    {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var rezervacijaToUpdate = db.Rezervacije.Find(id);
+        if (TryUpdateModel(rezervacijaToUpdate, "", new string[] { "Prezime", "Rezervirano", "Prijava", "Odjava" }))
+        {
+
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+
+        }
+        return View(rezervacijaToUpdate);
+    }*/
 
         // GET: Rezervacija/Delete/5
         public ActionResult Delete(int? id)

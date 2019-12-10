@@ -75,7 +75,7 @@ namespace HoteliTest.Controllers
 
             
         }
-
+        [HttpGet]
         // GET: Racun/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -95,24 +95,20 @@ namespace HoteliTest.Controllers
         // POST: Racun/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(int? id)
+        public ActionResult Edit([Bind(Include = "Prezime, Placeno, IznosUkupno, RacunID")] Racun receipt)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var racunToUpdate = db.Racuni.Find(id);
-            if (TryUpdateModel(racunToUpdate, "", new string[] { "Prezime", "Placeno", "IznosUkupno", "RacunID" }))
-            {
-               
+                if (ModelState.IsValid)
+                {
                     db.SaveChanges();
                     return RedirectToAction("Index");
-                
-               
-            }
-            return View(racunToUpdate);
+                }
+
+                ViewBag.RezervacijaID =
+                new SelectList(db.Rezervacije, "RezervacijaID", "RezervacijaID", receipt.RezervacijaID);
+                return View(receipt);
+            
         }
 
         // GET: Racun/Delete/5

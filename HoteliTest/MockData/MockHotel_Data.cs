@@ -1,5 +1,6 @@
 ﻿using HoteliTest.DAL;
 using HoteliTest.Models;
+using HoteliTest.ViewModels;
 using Moq;
 using System;
 using System.Collections.Generic;
