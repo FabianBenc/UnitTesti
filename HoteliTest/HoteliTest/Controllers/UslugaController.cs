@@ -92,7 +92,7 @@ namespace HoteliTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ChangeState<Usluga>(usluga);
+                //db.ChangeState<Usluga>(usluga);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

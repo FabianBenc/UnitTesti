@@ -26,44 +26,9 @@ namespace HoteliTest.Controllers
         }
 
         // GET: Gost
-        public ActionResult Index(string sortOrder,string currentFilter,string searchString, int? page)
+        public ViewResult Index()
         {
-            ViewBag.TrenutniSort = sortOrder;
-            ViewBag.ImeSortParm = String.IsNullOrEmpty(sortOrder) ? "ime_desc" : "";
-           
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-            var gosti = from s in db.Gosti
-                        select s;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                gosti = gosti.Where(s => s.Ime.Contains(searchString) || s.Prezime.Contains(searchString));
-            }
-
-            switch (sortOrder)
-            {
-                case "ime_desc":
-                    gosti = gosti.OrderByDescending(s => s.Ime);
-                    break;
-             
-                default:
-                    gosti = gosti.OrderBy(s => s.Ime);
-                    break;
-            }
-
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-            return View(gosti.ToPagedList(pageNumber,pageSize));
+            return View("Index", db.Gosti.ToList());
         }
 
         // GET: Gost/Details/5
@@ -129,7 +94,7 @@ namespace HoteliTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ChangeState<Gost>(gost);
+                //db.ChangeState<Gost>(gost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

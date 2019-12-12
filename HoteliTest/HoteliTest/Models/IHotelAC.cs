@@ -19,6 +19,6 @@ namespace HoteliTest.Models
         DbSet<StavkaRacuna> StavkeRacuna { get; }
 
         int SaveChanges();
-        void ChangeState<T>(T item) where T : class;
+        //void ChangeState<T>(T item) where T : class;
     }
 }

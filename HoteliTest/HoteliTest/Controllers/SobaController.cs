@@ -98,7 +98,7 @@ namespace HoteliTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ChangeState<Soba>(soba);
+                //db.ChangeState<Soba>(soba);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

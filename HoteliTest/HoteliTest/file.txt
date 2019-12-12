@@ -106,3 +106,6 @@ The statement has been terminated.
    at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
    at System.Data.Entity.DbContext.SaveChanges()
    at HoteliTest.Controllers.RezervacijaController.Create(RezervacijaView rezervacijaView) in C:\Users\fbenc\source\repos\Akademija\HoteliTest\HoteliTest\Controllers\RezervacijaController.cs:line 74
+2019-12-12 10:27:39.4461|ERROR|HoteliTest.Controllers.BaseController|The model item passed into the dictionary is of type 'System.Collections.Generic.List`1[HoteliTest.Models.Gost]', but this dictionary requires a model item of type 'PagedList.IPagedList`1[HoteliTest.Models.Gost]'.
+2019-12-12 10:27:42.8650|ERROR|HoteliTest.Controllers.BaseController|The model item passed into the dictionary is of type 'System.Collections.Generic.List`1[HoteliTest.Models.Gost]', but this dictionary requires a model item of type 'PagedList.IPagedList`1[HoteliTest.Models.Gost]'.
+2019-12-12 10:27:48.2680|ERROR|HoteliTest.Controllers.BaseController|The model item passed into the dictionary is of type 'System.Collections.Generic.List`1[HoteliTest.Models.Gost]', but this dictionary requires a model item of type 'PagedList.IPagedList`1[HoteliTest.Models.Gost]'.

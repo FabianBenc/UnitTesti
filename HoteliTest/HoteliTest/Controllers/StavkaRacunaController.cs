@@ -116,7 +116,7 @@ namespace HoteliTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ChangeState<StavkaRacuna>(stavkaRacuna);
+                //db.ChangeState<StavkaRacuna>(stavkaRacuna);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

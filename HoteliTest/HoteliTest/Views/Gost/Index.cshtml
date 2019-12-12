@@ -1,6 +1,6 @@
-﻿@model PagedList.IPagedList<HoteliTest.Models.Gost>
+﻿@model IEnumerable<HoteliTest.Models.Gost>
     @using PagedList.Mvc;
-<link href="~/Content/PagedList.css"  rel="stylesheet" type="text/css"/>
+
 
 @{
     ViewBag.Title = "Gosti";
@@ -12,17 +12,11 @@
     @Html.ActionLink("Novi Gost", "Create")
 </p>
 
-@using (Html.BeginForm("Index","Gost",FormMethod.Get))
-{
-    <p>
-        Pretrazi po imenu: @Html.TextBox("SearchString",ViewBag.CurrentFilter as string)
-        <input type="submit" value="Trazi"/>
-    </p>
-}
+
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Ime", "Index", new { sortOrder = ViewBag.ImeSortParm,currentFilter=ViewBag.CurrentFilter })
+            Ime
         </th>
        <th>
            Prezime
@@ -60,6 +54,4 @@
 
 </table>
 <br />
-Page @(Model.PageCount<Model.PageNumber ? 0 :Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model,page=>Url.Action("Index", new {page, sortOrder=ViewBag.TrenutniSort,CurrentFilter=ViewBag.CurrentFilter }))
