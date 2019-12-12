@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoteliTest", "HoteliTest\Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestiranje", "UnitTestiranje\UnitTestiranje.csproj", "{FE2C0B31-876A-46E0-85E0-4996C9C10ADF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestiranje", "ApiTestiranje\ApiTestiranje.csproj", "{F717AF75-9E0C-47FD-A80C-D5084B69D9DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FE2C0B31-876A-46E0-85E0-4996C9C10ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2C0B31-876A-46E0-85E0-4996C9C10ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2C0B31-876A-46E0-85E0-4996C9C10ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F717AF75-9E0C-47FD-A80C-D5084B69D9DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F717AF75-9E0C-47FD-A80C-D5084B69D9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F717AF75-9E0C-47FD-A80C-D5084B69D9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F717AF75-9E0C-47FD-A80C-D5084B69D9DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

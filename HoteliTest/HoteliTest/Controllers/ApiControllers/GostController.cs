@@ -13,73 +13,82 @@ namespace HoteliTest.Controllers.ApiControllers
 {
     public class GostController : ApiController
     {
-        private HotelContext db = new HotelContext();
+        private IHotelAC context = new HotelContext();
 
-        [HttpGet]
-        public IEnumerable<GostDTO> Gosti()
+        public GostController() { }
+
+        public GostController(IHotelAC context)
         {
-            return db.Gosti.Select(Mapper.Map<Gost, GostDTO>).ToList();
+            this.context = context;
         }
 
         [HttpGet]
-        public IHttpActionResult Gost(int id)
+        public IHttpActionResult GetGuests()
         {
-            var gost = db.Gosti.Find(id);
-            if (gost == null)
+            return Ok(context.Gosti.Select(Mapper.Map<Gost, GostDTO>).ToList());
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetGuest(int id)
+        {
+            var guests = context.Gosti.FirstOrDefault(x => x.GostID == id);
+
+            if (guests == null)
             {
                 return NotFound();
             }
-            return Ok(Mapper.Map<Gost, GostDTO>(db.Gosti.Find(id)));
+
+            return Ok(Mapper.Map<Gost, GostDTO>(guests));
         }
 
         [HttpPost]
-        public IHttpActionResult DodajGosta(GostDTO gost)
+        public IHttpActionResult CreateGuest([FromBody]GostDTO guestDto)
         {
             if (!ModelState.IsValid)
             {
-                BadRequest("Krivi unos");
+                return BadRequest("Invalid data");
             }
 
-            db.Gosti.Add(Mapper.Map<GostDTO, Gost>(gost));
-            db.SaveChanges();
+            context.Gosti.Add(Mapper.Map<GostDTO, Gost>(guestDto));
+            context.SaveChanges();
+            var guestID = context.Gosti.ToList().Last().GostID;
 
-            return Ok(gost);
-        }
-
-        [HttpPut]
-        public IHttpActionResult UrediGosta(GostDTO gost)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                BadRequest("Krivi unos");
-            }
-
-            var nadeniGost = db.Gosti.Find(gost.GostID);
-
-            if (nadeniGost == null)
-            {
-                return NotFound();
-            }
-
-            Mapper.Map(gost, nadeniGost);
-            db.SaveChanges();
-
-            return Ok(gost);
+            return Content(HttpStatusCode.Created, guestID);
         }
 
         [HttpDelete]
-        public IHttpActionResult ObrisiGosta(int id)
+        public IHttpActionResult DeleteGuest(int id)
         {
-            var gost = db.Gosti.Find(id);
-            if (gost == null)
-            {
-                return NotFound();
-            }
-            db.Gosti.Remove(gost);
-            db.SaveChanges();
+            var guest = context.Gosti.SingleOrDefault(x => x.GostID == id);
 
-            return Ok(Mapper.Map<Gost, GostDTO>(gost));
+            if (guest == null)
+            {
+                return BadRequest("There doesnt exist a guest with that id");
+            }
+
+            context.Gosti.Remove(guest);
+            context.SaveChanges();
+
+            return Ok("Guest removed succsessfully");
+        }
+
+        [HttpPut]
+        public IHttpActionResult UpdateGuest(GostDTO guestDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid data");
+            }
+
+            if (context.Gosti.Any(x => x.GostID == guestDto.GostID))
+            {
+                var findGuest = context.Gosti.Find(guestDto.GostID);
+                Mapper.Map(guestDto, findGuest);
+                context.SaveChanges();
+                return Ok("Guest succsefully updated");
+            }
+
+            return NotFound();
         }
     }
 }
